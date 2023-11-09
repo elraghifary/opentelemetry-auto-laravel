@@ -9,8 +9,6 @@ if (class_exists(Sdk::class) && Sdk::isInstrumentationDisabled(LaravelInstrument
     return;
 }
 
-if (extension_loaded('opentelemetry') === false) {
-    error_log('The opentelemetry extension must be loaded in order to autoload the OpenTelemetry Laravel auto-instrumentation', E_USER_WARNING);
+if (extension_loaded('opentelemetry') === true) {
+    LaravelInstrumentation::register();
 }
-
-LaravelInstrumentation::register();
